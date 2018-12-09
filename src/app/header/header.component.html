@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">PopCorns</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAuth()">
+        <a class="nav-link" routerLink="/">Inicio</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="isAuth()">
+        <a class="nav-link" routerLink="/peliculas">Cartelera</a>
+      </li>
+      <li class="nav-item" *ngIf="!isAuth()">
+        <button class="btn btn-primary float-md-right" routerLink="/inises">Inicie sesión</button>
+      </li>
+      <li class="nav-item" *ngIf="isAuth()"> 
+        <button id="btnLogout" class="btn btn-primary float-md-right" (click)="onLogout()">Cerrar sesión</button>
+      </li>
+    </ul>
+  </div>
+</nav>

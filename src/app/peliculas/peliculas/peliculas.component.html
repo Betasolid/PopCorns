@@ -1,0 +1,33 @@
+<h3>Listado de Peliculas</h3>
+<a class="btn btn-primary float-md-right" routerLink="/addpelicula">Añadir
+  nueva pelicula</a>
+<br>
+<table class="table table-bordered table-striped tabla" style="margin-top:
+40px;">
+  <thead>
+    <tr class="filters">
+      <th>Titulo</th>
+      <th>Genero</th>
+      <th>Director</th>
+      <th>Fecha</th>
+      <th>Estrellas</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pelicula of peliculasArray">
+      <td>{{ pelicula.titulo }}</td>
+      <td>{{ pelicula.genero }}</td>
+      <td>{{ pelicula.director }}</td>
+      <td>{{ pelicula.fecha }}</td>
+      <td>{{ pelicula.estrellas }}</td>
+      <td>
+        <button type="button" class="btn btn-success" routerLink="/editpelicula/{{ pelicula.$key }}" (click)="peliculaservice.rellenaredit(pelicula)">Editar</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="onDelete(pelicula.$key)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

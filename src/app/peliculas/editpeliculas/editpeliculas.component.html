@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset 2">
+    <h2>Editar pelicula</h2>
+    <a class="btn btn-primary float-md-right" routerLink="/peliculas">Regresar al listado</a>
+    <br>
+    <form [formGroup]="this.peliculaservice.form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for = "titulo">Titulo</label>
+        <i class="fa fa-check-circle check" *ngIf="this.peliculaservice.form.controls.titulo.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="this.peliculaservice.form.controls.titulo.invalid && this.peliculaservice.form.controls.titulo.touched"></i>
+        <input type="text" class="form-control" id="titulo" formControlName="titulo">
+        <p class="alert alert-danger" *ngIf="this.peliculaservice.form.controls.titulo.invalid && this.peliculaservice.form.controls.titulo.touched">
+          El campo Titulo es obligatorio.
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="genero">Genero de la pelicula</label>
+        <i class="fa fa-check-circle check" *ngIf="this.peliculaservice.form.controls.genero.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="this.peliculaservice.form.controls.genero.invalid && this.peliculaservice.form.controls.genero.touched"></i>
+        <input type="text" class="form-control" id="genero" formControlName="genero">
+        <p class="alert alert-danger" *ngIf="this.peliculaservice.form.controls.genero.invalid && this.peliculaservice.form.controls.genero.touched">
+          El campo Genero es obligatorio.
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="director">Director</label>
+        <i class="fa fa-check-circle check" *ngIf="this.peliculaservice.form.controls.director.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="this.peliculaservice.form.controls.director.invalid && this.peliculaservice.form.controls.director.touched"></i>
+        <input type="text" class="form-control" id="director" formControlName="director">
+        <p class="alert alert-danger" *ngIf="this.peliculaservice.form.controls.director.invalid && this.peliculaservice.form.controls.director.touched">
+          El campo Director es obligatorio.
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="fecha">Fecha estreno</label>
+        <i class="fa fa-check-circle check" *ngIf="this.peliculaservice.form.controls.fecha.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="this.peliculaservice.form.controls.fecha.invalid &&
+          this.peliculaservice.form.controls.fecha.touched"></i>
+        <input type="date" class="form-control" id="fecha" formControlName="fecha">
+        <p class="alert alert-danger" *ngIf="this.peliculaservice.form.controls.fecha.invalid &&
+          this.peliculaservice.form.controls.fecha.touched">
+          El campo Fecha es obligatorio.
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="estrellas">Estrellas de la pelicula</label>
+        <i class="fa fa-check-circle check" *ngIf="this.peliculaservice.form.controls.estrellas.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="this.peliculaservice.form.controls.estrellas.invalid && this.peliculaservice.form.controls.estrellas.touched"></i>
+        <select class="form-control" id="estrellas" formControlName="estrellas">
+          <option value="">Seleccione..</option>
+          <option value=1> 1</option>
+          <option value=2> 2</option>
+          <option value=3> 3</option>
+          <option value=4> 4</option>
+          <option value=5> 5</option>
+        </select>
+        <p class="alert alert-danger" *ngIf="this.peliculaservice.form.controls.estrellas.invalid && this.peliculaservice.form.controls.estrellas.touched">
+          El campo estrellas es obligatorio.
+        </p>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!this.peliculaservice.form.valid" (click)="editPelicula()">Añadir Pelicula</button>
+      <a class="btn btn-danger" routerLink="/peliculas" (click)="this.peliculaservice.cancelar()">Cancelar</a>
+      <p class="alert alert-danger" *ngIf="!this.peliculaservice.form.valid">
+        Por favor complete todos los campos
+      </p>
+    </form>
+  </div>
+</div>
